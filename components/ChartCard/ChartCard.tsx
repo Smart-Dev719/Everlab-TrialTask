@@ -67,6 +67,9 @@ export function ChartCard() {
       colors: ['#fff'],
       strokeWidth: 2,
       strokeColors: '#AFB4BF',
+      hover: {
+        size: 4
+      },
     },
     tooltip: {
       enabled: true,
