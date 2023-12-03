@@ -1,4 +1,5 @@
 'use client';
+
 import dynamic from 'next/dynamic';
 import { Group, Card, Text, Flex } from '@mantine/core';
 import { ApexOptions } from 'apexcharts';
