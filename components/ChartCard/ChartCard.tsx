@@ -69,7 +69,7 @@ export function ChartCard() {
       strokeWidth: 2,
       strokeColors: '#AFB4BF',
       hover: {
-        size: 4
+        size: 4,
       },
     },
     tooltip: {
