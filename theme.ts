@@ -1,42 +1,52 @@
-import { Button, rem, defaultVariantColorsResolver, VariantColorsResolver, parseThemeColor, rgba, darken, createTheme, MantineColorsTuple } from '@mantine/core';
+import {
+  Button,
+  rem,
+  defaultVariantColorsResolver,
+  VariantColorsResolver,
+  parseThemeColor,
+  rgba,
+  darken,
+  createTheme,
+  MantineColorsTuple,
+} from '@mantine/core';
 
 const beige: MantineColorsTuple = [
-  "#FFFCF8",
-  "#FAF7F4",
-  "#F3E8DE",
-  "#EEDAC9",
-  "#E0BFA2",
-  "#AE9D87",
-  "",
-  "",
-  "#8E7D66",
-  "#605648"
+  '#FFFCF8',
+  '#FAF7F4',
+  '#F3E8DE',
+  '#EEDAC9',
+  '#E0BFA2',
+  '#AE9D87',
+  '',
+  '',
+  '#8E7D66',
+  '#605648',
 ];
 
 const gray: MantineColorsTuple = [
-  "#F3F3F3",
-  "#E8E7E7",
-  "#E8E7E7",
-  "#E2E4ED",
-  "#D7D8E3",
-  "#AFB4BF",
-  "",
-  "",
-  "",
-  ""
+  '#F3F3F3',
+  '#E8E7E7',
+  '#E8E7E7',
+  '#E2E4ED',
+  '#D7D8E3',
+  '#AFB4BF',
+  '',
+  '',
+  '',
+  '',
 ];
 
 const dark: MantineColorsTuple = [
-  "",
-  "",
-  "",
-  "#737985",
-  "#575861",
-  "#221F20",
-  "#25262B",
-  "",
-  "",
-  ""
+  '',
+  '',
+  '',
+  '#737985',
+  '#575861',
+  '#221F20',
+  '#25262B',
+  '',
+  '',
+  '',
 ];
 
 const variantColorResolver: VariantColorsResolver = (input) => {
@@ -159,11 +169,10 @@ export const theme = createTheme({
   components: {
     Button: Button.extend({
       defaultProps: {
-        fw: "500",
-        lts: "0.25px",
+        fw: '500',
+        lts: '0.25px',
       },
       vars: (theme, props) => {
-        
         if (props.size === 'xs') {
           return {
             root: {
@@ -220,7 +229,7 @@ export const theme = createTheme({
         }
 
         return { root: {} };
-      },      
+      },
     }),
   },
   variantColorResolver,
