@@ -1,6 +1,9 @@
 import { Title, Text, Button, Group } from '@mantine/core';
+import { IconPlus } from '@tabler/icons-react';
 
 export function Welcome() {
+  const icon = <IconPlus size={14} color="#221F20" />
+
   return (
     <>
       <Title ta="center" pt={100} order={1} lts={1}>
@@ -24,6 +27,9 @@ export function Welcome() {
         <Button variant='light' color='beige' size='xl'>Light</Button>     
         <Button variant='subtle' color='gray' size='xl'>Subtle</Button>
         <Button variant='subtle' color='beige' size='xl'>Subtle</Button>  
+      </Group>
+      <Group justify="center" gap="xs" pt={50}>
+        <Button variant='filled' color='beige' size='md' leftSection={icon} rightSection={icon} px={20}>Button</Button>  
       </Group>
     </>
   );
