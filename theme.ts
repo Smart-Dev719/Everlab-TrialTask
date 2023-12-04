@@ -1,4 +1,4 @@
-import { Button, rem, createTheme, MantineColorsTuple } from '@mantine/core';
+import { Button, rem, defaultVariantColorsResolver, VariantColorsResolver, parseThemeColor, rgba, darken, createTheme, MantineColorsTuple } from '@mantine/core';
 
 const beige: MantineColorsTuple = [
   "#FFFCF8",
@@ -39,6 +39,116 @@ const dark: MantineColorsTuple = [
   ""
 ];
 
+const variantColorResolver: VariantColorsResolver = (input) => {
+  const defaultResolvedColors = defaultVariantColorsResolver(input);
+  const parsedColor = parseThemeColor({
+    color: input.color || input.theme.primaryColor,
+    theme: input.theme,
+  });
+
+  // Completely override variant
+  if (input.variant === 'default' && input.color === 'gray') {
+    return {
+      background: 'white',
+      hover: gray[1],
+      color: dark[5],
+      border: `${rem(1)} solid ${dark[5]}`,
+    };
+  }
+
+  if (input.variant === 'default' && input.color === 'beige') {
+    return {
+      background: 'white',
+      hover: gray[1],
+      color: dark[5],
+      border: `${rem(1)} solid ${dark[5]}`,
+    };
+  }
+
+  if (input.variant === 'white' && input.color === 'gray') {
+    return {
+      background: 'white',
+      hover: 'white',
+      color: dark[5],
+    };
+  }
+
+  if (input.variant === 'white' && input.color === 'beige') {
+    return {
+      background: 'white',
+      hover: 'white',
+      color: beige[8],
+      hoverColor: beige[9],
+    };
+  }
+
+  if (input.variant === 'outline' && input.color === 'gray') {
+    return {
+      background: 'white',
+      hover: '#C1C2C5',
+      color: dark[5],
+      border: `${rem(1)} solid ${dark[5]}`,
+    };
+  }
+
+  if (input.variant === 'outline' && input.color === 'beige') {
+    return {
+      background: 'white',
+      hover: beige[0],
+      color: beige[8],
+      border: `${rem(1)} solid ${beige[8]}`,
+    };
+  }
+
+  if (input.variant === 'filled' && input.color === 'gray') {
+    return {
+      background: dark[5],
+      hover: dark[5],
+    };
+  }
+
+  if (input.variant === 'filled' && input.color === 'beige') {
+    return {
+      background: beige[5],
+      hover: beige[8],
+    };
+  }
+
+  if (input.variant === 'light' && input.color === 'gray') {
+    return {
+      background: '#C1C2C5',
+      hover: gray[1],
+      color: dark[5],
+    };
+  }
+
+  if (input.variant === 'light' && input.color === 'beige') {
+    return {
+      background: beige[3],
+      hover: beige[4],
+      color: dark[5],
+    };
+  }
+
+  if (input.variant === 'subtle' && input.color === 'gray') {
+    return {
+      background: 'white',
+      hover: '#C1C2C5',
+      color: dark[5],
+    };
+  }
+
+  if (input.variant === 'subtle' && input.color === 'beige') {
+    return {
+      background: 'white',
+      hover: beige[1],
+      color: beige[8],
+    };
+  }
+
+  return defaultResolvedColors;
+};
+
 export const theme = createTheme({
   fontFamily: 'Inter, sans-serif',
   colors: {
@@ -48,7 +158,12 @@ export const theme = createTheme({
   },
   components: {
     Button: Button.extend({
+      defaultProps: {
+        fw: "500",
+        lts: "0.25px",
+      },
       vars: (theme, props) => {
+        
         if (props.size === 'xs') {
           return {
             root: {
@@ -105,7 +220,8 @@ export const theme = createTheme({
         }
 
         return { root: {} };
-      },
+      },      
     }),
   },
+  variantColorResolver,
 });
