@@ -1,4 +1,4 @@
-import { createTheme, MantineColorsTuple } from '@mantine/core';
+import { Button, rem, createTheme, MantineColorsTuple } from '@mantine/core';
 
 const beige: MantineColorsTuple = [
   "#FFFCF8",
@@ -46,11 +46,66 @@ export const theme = createTheme({
     gray,
     dark,
   },
-  fontSizes: {
-    xs: '12px',
-    sm: '14px',
-    md: '16px',
-    lg: '16px',
-    xl: '18px',
+  components: {
+    Button: Button.extend({
+      vars: (theme, props) => {
+        if (props.size === 'xs') {
+          return {
+            root: {
+              '--button-height': rem(24),
+              '--button-padding-x': rem(12),
+              '--button-fz': rem(12),
+              '--button-radius': rem(6),
+            },
+          };
+        }
+
+        if (props.size === 'sm') {
+          return {
+            root: {
+              '--button-height': rem(32),
+              '--button-padding-x': rem(16),
+              '--button-fz': rem(14),
+              '--button-radius': rem(10),
+            },
+          };
+        }
+
+        if (props.size === 'md') {
+          return {
+            root: {
+              '--button-height': rem(40),
+              '--button-padding-x': rem(20),
+              '--button-fz': rem(16),
+              '--button-radius': rem(10),
+            },
+          };
+        }
+
+        if (props.size === 'lg') {
+          return {
+            root: {
+              '--button-height': rem(48),
+              '--button-padding-x': rem(24),
+              '--button-fz': rem(16),
+              '--button-radius': rem(10),
+            },
+          };
+        }
+
+        if (props.size === 'xl') {
+          return {
+            root: {
+              '--button-height': rem(56),
+              '--button-padding-x': rem(32),
+              '--button-fz': rem(18),
+              '--button-radius': rem(10),
+            },
+          };
+        }
+
+        return { root: {} };
+      },
+    }),
   },
 });
